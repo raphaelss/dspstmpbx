@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Blockly test</title>
+</head>
+<body>
+  <p><button onclick="showCode()">Show JavaScript</button></p>
+  <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+  <script src="blockly/blockly_compressed.js"></script>
+  <script src="blockly/javascript_compressed.js"></script>
+  <script src="blockly/blocks_compressed.js"></script>
+  <script src="blockly/msg/js/en.js"></script>
+
+  <script src="dsp_blocks.js"></script>
+  <script src="dsp_generators.js"></script>
+
+  <xml id="toolbox" style="display: none">
+    <!--<category name="Dsp">-->
+      <block type="dsp_adc"></block>
+      <block type="dsp_dac"></block>
+      <block type="dsp_reverb"></block>
+      <block type="math_number"></block>
+      <block type="dsp_knobs"></block>
+    <!--</category>-->
+  </xml>
+  <script>
+    Blockly.inject(document.getElementById('blocklyDiv'), {
+      toolbox: document.getElementById('toolbox'),
+      trashcan: false
+    });
+
+    function showCode() {
+      // Generate JavaScript code and display it.
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.JavaScript.workspaceToCode();
+      alert(code);
+    }
+  </script>
+</body>
+</html>
