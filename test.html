@@ -11,20 +11,21 @@
   <script src="blockly/javascript_compressed.js"></script>
   <script src="blockly/blocks_compressed.js"></script>
   <script src="blockly/msg/js/en.js"></script>
-
-  <script src="dsp_blocks.js"></script>
-  <script src="dsp_generators.js"></script>
+  <script src="dsp.js"></script>
 
   <xml id="toolbox" style="display: none">
     <!--<category name="Dsp">-->
       <block type="dsp_adc"></block>
       <block type="dsp_dac"></block>
-      <block type="dsp_reverb"></block>
       <block type="math_number"></block>
       <block type="dsp_knobs"></block>
+      <block type="dsp_reverb"></block>
+      <block type="dsp_overdrive"></block>
     <!--</category>-->
   </xml>
   <script>
+    define_block('Reverb', ['Room size', 'High freq. damp']);
+    define_block('Overdrive', ['Level', 'Gain', 'Tone'])
     Blockly.inject(document.getElementById('blocklyDiv'), {
       toolbox: document.getElementById('toolbox'),
       trashcan: false
